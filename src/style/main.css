@@ -10,6 +10,7 @@
     user-select: none;
 }
 .game {
+    position: relative;
     display: flex;
     width: 430px;
     aspect-ratio: 1 / 1;
@@ -44,23 +45,31 @@
 .box-open::after {
     transform: rotateY(180deg);
 }
-.box-match::after {
-    transform: rotateY(180deg);
+.box-match {
+    background-color: #cccccc;
 }
 .popup {
     position: absolute;
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
-    font-size: 5em;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #03d303;
-    text-shadow: 2px 2px 4px #000000;
-    background-color: rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 2px #000000;
+    background-color: rgba(0, 0, 0, 0.4);
     transition: 0.25s;
+}
+.popup h3 {
+    font-size: 5em;
+    color: #05bb05;
+    margin-bottom: 30px;
+}
+.popup p {
+    width: 70%;
+    font-size: 2em;
+    color: yellow;
+    text-align-last: justify;
 }
 @media screen and (max-width: 450px), screen and (max-height: 450px) {
     .container {
