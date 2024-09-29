@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+body {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #fc1e8a;
+}
+h2 {
+    font-size: 3em;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.reset {
+    padding: 15px 20px;
+    width:  100%;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 7px;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+.reset:active {
+    color: #ec38bc;
+    background-color: #262809;
+}
