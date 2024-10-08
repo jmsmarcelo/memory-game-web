@@ -22,34 +22,38 @@ function setupGame() {
     for(let i = 0; i < state.values.emojis.length; i++) {
         let box = document.createElement('div');
         box.className = 'item';
-        box.innerHTML = shuffleEmojis[i];
-        box.onclick = handleClick;
+        box.onclick = function() {
+            if(state.values.paused === true) return;
+            if(state.values.time.length === 0) state.values.time[0] = new Date().getTime();
+            if(state.values.openCards.length < 2 &&
+                    !this.classList.contains('box-open') && !this.classList.contains('box-match')) {
+                        this.innerHTML = shuffleEmojis[i];
+                this.classList.add('box-open');
+                state.values.openCards.push(this);
+            }
+            if(state.values.openCards.length === 2) {
+                state.values.paused = true;
+                setTimeout(checkMatch, 500);
+            }
+        };
         state.views.game.appendChild(box);
-    }
-}
-function handleClick() {
-    if(state.values.paused === true) return;
-    if(state.values.time.length === 0) state.values.time[0] = new Date().getTime();
-    if(state.values.openCards.length < 2 &&
-            !this.classList.contains('box-open') && !this.classList.contains('box-match')) {
-        this.classList.add('box-open');
-        state.values.openCards.push(this);
-    }
-    if(state.values.openCards.length === 2) {
-        state.values.paused = true;
-        setTimeout(checkMatch, 500);
     }
 }
 function checkMatch() {
     if(state.values.openCards[0].innerHTML === state.values.openCards[1].innerHTML) {
         state.values.openCards[0].classList.add('box-match');
         state.values.openCards[1].classList.add('box-match');
+        state.values.openCards = [];
     } else {
         state.values.openCards[0].classList.remove('box-open');
         state.values.openCards[1].classList.remove('box-open');
         state.values.errors++;
+        setTimeout(() => {
+            state.values.openCards[0].innerHTML = '';
+            state.values.openCards[1].innerHTML = '';
+            state.values.openCards = [];
+        }, 150);
     }
-    state.values.openCards = [];
     if(document.querySelectorAll('.box-match').length === state.values.emojis.length) {
         state.values.time[1] = new Date().getTime();
         showPopup('You Winer');

@@ -6,12 +6,11 @@
 }
 body {
     display: flex;
-    width: 100vw;
     min-height: 100vh;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: #fc1e8a;
+    background-color: #003b20;
 }
 h2 {
     font-size: 3em;
@@ -33,6 +32,6 @@ h2 {
     font-weight: 600;
 }
 .reset:active {
-    color: #ec38bc;
+    color: #00b40f;
     background-color: #262809;
 }
