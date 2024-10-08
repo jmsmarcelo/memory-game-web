@@ -44,6 +44,7 @@ function checkMatch() {
         state.values.openCards[0].classList.add('box-match');
         state.values.openCards[1].classList.add('box-match');
         state.values.openCards = [];
+        state.values.paused = false;
     } else {
         state.values.openCards[0].classList.remove('box-open');
         state.values.openCards[1].classList.remove('box-open');
@@ -52,13 +53,13 @@ function checkMatch() {
             state.values.openCards[0].innerHTML = '';
             state.values.openCards[1].innerHTML = '';
             state.values.openCards = [];
+            state.values.paused = false;
         }, 150);
     }
     if(document.querySelectorAll('.box-match').length === state.values.emojis.length) {
         state.values.time[1] = new Date().getTime();
         showPopup('You Winer');
     }
-    state.values.paused = false;
 }
 function showPopup() {
     let popup = document.createElement('div');
