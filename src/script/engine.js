@@ -58,15 +58,15 @@ function checkMatch() {
     }
     if(document.querySelectorAll('.box-match').length === state.values.emojis.length) {
         state.values.time[1] = new Date().getTime();
-        showPopup('You Winner');
+        showWinner();
     }
 }
-function showPopup() {
+function showWinner() {
     let popup = document.createElement('div');
     let title = document.createElement('h3');
     let time = document.createElement('p');
     let errors = document.createElement('p');
-    title.textContent = 'You Winer';
+    title.textContent = 'You Winner';
     time.textContent = getTime();
     errors.textContent = 'Errors: ' + state.values.errors;
     popup.className = 'popup';
