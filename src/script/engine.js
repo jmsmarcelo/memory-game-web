@@ -58,7 +58,7 @@ function checkMatch() {
     }
     if(document.querySelectorAll('.box-match').length === state.values.emojis.length) {
         state.values.time[1] = new Date().getTime();
-        showPopup('You Winer');
+        showPopup('You Winner');
     }
 }
 function showPopup() {
